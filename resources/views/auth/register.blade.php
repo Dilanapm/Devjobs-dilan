@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" novalidate>
         @csrf
 
         <!-- Name -->
@@ -15,7 +15,20 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-
+ 
+        <!-- Tipo de cuenta -->
+        <div class="mt-4">
+            <x-input-label for="rol" :value="__('¿Qué tipo de cuenta deseas en DevJobs?')" />
+            <select
+            id="rol"
+            name="rol"
+            class="block font-medium text-sm text-gray-700 dark:text-gray-300 mt-2 dark:bg-gray-700 dark:border-gray-600 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full">
+                <option value="0" selected>Selecciona una opción</option>
+                <option value="1">Developer - Obbtener Empleo</option>
+                <option value="2">Recruiter - Publicar Empleos</option>
+            </select>
+            <x-input-error :messages="$errors->get('rol')" class="mt-2" />
+        </div>
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Contraseña')" />
