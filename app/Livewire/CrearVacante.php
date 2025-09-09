@@ -35,9 +35,9 @@ class CrearVacante extends Component
         $datos =  $this->validate();
 
         //Almacenar la imagen
-        $imagen = $this->imagen->store('public/vacantes');
+        $imagen = $this->imagen->store('vacantes');
 
-        $nombreImagen = str_replace('public/vacantes/', '', $imagen);
+        $nombreImagen = str_replace('vacantes/', '', $imagen);
         // dd($nombreImagen);
         // Crear la vacante
         Vacante::create([
